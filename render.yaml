@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: telegram-bio-bot
+    env: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    healthCheckPath: /health
+    envVars:
+      - key: BOTTOKEN
+        sync: false
+      - key: ADMINID
+        sync: false
+      - key: BOTUSERNAME
+        sync: false
+      - key: BOTDISPLAYNAME
+        value: LONG BIO BOT
+      - key: API_URL
+        value: https://loing-io.vercel.app/bio_upload
